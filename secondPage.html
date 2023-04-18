@@ -27,9 +27,9 @@
             box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
         }
 
-        input[type="text"],
-        input[type="password"],
-        #comment {
+
+        #comment,
+        #place {
             width: 90%;
             padding: 10px;
             margin-bottom: 20px;
@@ -47,16 +47,17 @@
             cursor: pointer;
             font-size: 16px;
             margin-top: 20px;
-            margin-left:auto;
-            margin-right:auto;
+            margin-left: auto;
+            margin-right: auto;
         }
 
             .login-btn:hover {
                 background-color: #3e8e41;
             }
-
-     
-        @media screen and (max-width: 768px) {
+        
+        
+        
+         @media screen and (max-width: 768px) {
             .form {
                 width: 80%;
             }
@@ -67,32 +68,40 @@
                 width: 90%;
             }
 
-            input[type="text"],
-            input[type="password"],
             #comment {
                 width: 100%;
             }
         }
     </style>
-
+   
 </head>
 <body>
 
 
     <!--design login form-->
-    <h2>Login Form</h2>
+    <h2>second step</h2>
     <div class="form">
 
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" placeholder="Enter your username">
+    
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password">
 
-        <button class="login-btn" onclick="login()">Login</button>
+        <label for="place">Place</label>
+        <br />
+        <select id="place" name="place">
+            <option value="In office">In office</option>
+            <option value="Working area">Working area</option>
+            <option value="Home">Home</option>
+        </select>
+
+        <label for="comment">Comment:</label>
+        <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Enter your comment"></textarea>
+        <div class="button-div">
+            <button class="login-btn" onclick="sessionStorageGet()">In </button>
+            <button class="login-btn">Out</button>
+        </div>
         <p style="text-align:center" id="error"></p>
     </div>
-
+  
 
     <script src="./script.js"></script>
 </body>

@@ -1,0 +1,30 @@
+Create table
+
+CREATE TABLE userInformation (
+  id uniqueidentifier,
+  username NVARCHAR(50) NOT NULL,
+  [password] VARCHAR(255) NOT NULL,
+  comment NVARCHAR(MAX),
+  [time]  DATETIME,
+  latitude DECIMAL(18,9),
+  longitude DECIMAL(18,9),
+  PRIMARY KEY (id)
+);
+
+
+procedure
+
+create procedure Proc_SavedUserInformation 
+  
+@userName NVARCHAR(50)=null,
+@userPass VARCHAR(255)=null,
+@comment NVARCHAR(MAX)=null,
+@currentTime  DATETIME=null,
+@latitude DECIMAL(18,9)=null,
+@longitude DECIMAL(18,9)=null
+
+
+as  
+begin    
+insert into userInformation (id,userName,userPass,comment,currentTime,latitude,longitude)values(NEWID(),@userName,@userPass,@comment,@currentTime,@latitude,@longitude);
+end  
