@@ -80,6 +80,10 @@ function showPosition(position) {
           .then(function (data) {
               console.log(data)
               const address = data.display_name;
+
+              const location = document.getElementById("currentLocation");
+              location.innerHTML = address;
+              
               console.log(address);
 
               const userInformation = {
