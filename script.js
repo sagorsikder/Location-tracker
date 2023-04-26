@@ -1,6 +1,83 @@
 
 
 function login() {
+
+    //test for mobile
+
+   
+
+
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+
+    function showPosition(position) {
+
+        //Now get neccessary information
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        const userName = document.getElementById("username");
+        const password = document.getElementById("password");
+        const now = new Date();
+
+        const year = now.getFullYear().toString().padStart(4, '0');
+        const month = (now.getMonth() + 1).toString().padStart(2, '0');
+        const day = now.getDate().toString().padStart(2, '0');
+        const hour = now.getHours().toString().padStart(2, '0');
+        const minute = now.getMinutes().toString().padStart(2, '0');
+        const second = now.getSeconds().toString().padStart(2, '0');
+
+        const currentDateTime = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+        console.log(currentDateTime);
+
+
+        getAddress(lat, lng)
+
+
+        function getAddress(latitude, longitude) {
+
+            const url = "https://nominatim.openstreetmap.org/reverse?lat=" + latitude + "&lon=" + longitude + "&format=json";
+
+            fetch(url)
+              .then(function (response) {
+                  return response.json();
+              })
+              .then(function (data) {
+                  console.log(data)
+                  const address = data.display_name;
+
+                  const location = document.getElementById("currentLocation");
+                  location.innerHTML = address;
+
+                  console.log(address);
+
+                  const userInformation = {
+                      user_Id: "admin",
+                      user_Pass: "Imfas@2000",
+                      userName: userName.value,
+                      password: password.value,
+                      time: currentDateTime,
+                      latitude: lat,
+                      longitude: lng,
+                      address: address
+                  }
+
+                  // Set a value in sessionStorage
+                  const myObjectString = JSON.stringify(userInformation);
+                  sessionStorage.setItem('myData', myObjectString);
+
+                  window.location.href = "secondPage.html";
+
+                  //window.location.replace("secondPage.html");
+              })
+              .catch(function (error) {
+                  console.error(error);
+              });
+        }
+    }
+
+        //test for mobile
+
+
+
     const information = {
         user_Id: "admin",
         user_Pass: "Imfas@2000"
@@ -81,8 +158,7 @@ function showPosition(position) {
               console.log(data)
               const address = data.display_name;
 
-              const location = document.getElementById("currentLocation");
-              location.innerHTML = address;
+             
               
               console.log(address);
 
