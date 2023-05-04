@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Login page</title>
+    <!--jquery included-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <style>
         body {
@@ -29,7 +32,9 @@
 
 
         #comment,
-        #place {
+        #place,
+        #office,
+        #branchList {
             width: 90%;
             padding: 10px;
             margin-bottom: 20px;
@@ -68,7 +73,10 @@
                 width: 90%;
             }
 
-            #comment {
+            #comment,
+            #place,
+            #office,
+            #branchList {
                 width: 100%;
             }
         }
@@ -84,14 +92,24 @@
 
     
 
-
+        <label for="Branch">Branch</label>
+        <br />
+        <select id="branchList" name="Branch">
+          
+        </select>
+        <br/>
         <label for="place">Place</label>
         <br />
         <select id="place" name="place">
             <option value="In office">In office</option>
             <option value="Working area">Working area</option>
-            <option value="Home">Home</option>
+            <option value="Samity"> Samity</option>
         </select>
+
+
+
+
+
 
         <label for="comment">Comment:</label>
         <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Enter your comment"></textarea>

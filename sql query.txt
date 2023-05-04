@@ -12,7 +12,7 @@ CREATE TABLE userInformation (
 );
 
 
-procedure
+<<<procedure for save userInformation>>>
 
 create procedure Proc_SavedUserInformation 
   
@@ -28,3 +28,17 @@ as
 begin    
 insert into userInformation (id,userName,userPass,comment,currentTime,latitude,longitude)values(NEWID(),@userName,@userPass,@comment,@currentTime,@latitude,@longitude);
 end  
+
+
+<<<procedure for get branchList>>>
+
+create procedure Proc_getBranchList 
+
+as  
+begin    
+select ID,branchName from tblBranch
+end  
+
+
+
+--EXEC Proc_getBranchList
